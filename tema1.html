@@ -60,9 +60,9 @@
                     <p>Completar el programa en PSeInt que administra esta información. Se te entrega un archivo base con el menú y salida resueltos. Debes desarrollar:</p>
                     <ul class="list-disc pl-5 space-y-1">
                         <li>El bloque <strong>Segun</strong> en el algoritmo principal para invocar módulos.</li>
-                        <li><strong>Módulo de Entrada:</strong> Solicitar goles base iniciales y validar que sea un valor positivo.</li>
-                        <li><strong>Módulo de Proceso 1:</strong> Procesar <em>N</em> partidos, validar los goles ingresados, e identificar el valor <strong>MÁXIMO</strong> de goles y en qué <strong>partido (posición)</strong> ocurrió.</li>
-                        <li><strong>Módulo de Proceso 2:</strong> Procesar <em>N</em> partidos, validar, y usar un <strong>ACUMULADOR</strong> para calcular el <strong>PROMEDIO</strong> de goles al finalizar.</li>
+                        <li><strong>Módulo de Entrada:</strong> Solicitar <em>goles base</em> iniciales y validar que sea un valor positivo.</li>
+                        <li><strong>Módulo de Proceso 1:</strong> Recibir los goles base por parámetro. Procesar <em>N</em> partidos, validar los goles ingresados, e identificar el valor <strong>MÁXIMO</strong> de goles, en qué <strong>partido (posición)</strong> ocurrió, y <strong>comparar</strong> si ese máximo superó a los goles base.</li>
+                        <li><strong>Módulo de Proceso 2:</strong> Recibir los goles base por parámetro. Procesar <em>N</em> partidos, usar un <strong>ACUMULADOR</strong> para calcular el <strong>PROMEDIO</strong> de esos partidos, y calcular el <strong>TOTAL HISTÓRICO</strong> sumando los goles base al acumulador.</li>
                     </ul>
                 </div>
             </section>
@@ -118,9 +118,11 @@ Ingrese una opción: 0
                             <div class="md:col-span-4 bg-black/30 p-5 rounded-xl border border-white/10 flex flex-col">
                                 <h3 class="text-sm font-bold mb-3 text-sky-300 uppercase tracking-wider">Entrada (Simulada)</h3>
                                 <div class="flex-grow bg-black/50 p-4 rounded-lg border border-white/5">
-                                    <pre class="console text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">Opción 2
+                                    <pre class="console text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">Asume goles base = 5
+
+Opción 2
 (N=3 partidos)
-(goles: 2, 4, 1)
+(goles: 2, 6, 1)
 
 Opción 3
 (N=2 partidos)
@@ -135,15 +137,17 @@ Opción 0</pre>
                                     <pre class="console text-green-400 text-sm whitespace-pre-wrap leading-relaxed">Ingrese una opción: 2
 Ingrese la cantidad de partidos a analizar: 3
 Goles partido 1: 2
-Goles partido 2: 4
+Goles partido 2: 6
 Goles partido 3: 1
-El partido con más goles fue el partido 2 con 4 goles.
+El partido con más goles fue el partido 2 con 6 goles.
+¡El máximo (6) superó a los goles base (5)!
 
 Ingrese una opción: 3
 Ingrese la cantidad de partidos a promediar: 2
 Goles partido 1: 3
 Goles partido 2: 3
-El promedio de goles es: 3.0
+El promedio de estos partidos es: 3.0
+Total histórico sumando goles base: 11 goles
 
 Ingrese una opción: 0
 (Fin del programa)</pre>
@@ -168,9 +172,9 @@ Ingrese una opción: 0
 		MostrarMenu(opc);
 		
 		// [TU CÓDIGO AQUÍ - Construye el Segun completo con las opciones 0, 1, 2, 3 y 4]
-		// Opción 1: Llama a IngresarGolesBase (Pasar variable por referencia si es necesario o leerla en el subproceso)
-		// Opción 2: Llama a ProcesarGolesMaximo 
-		// Opción 3: Llama a CalcularPromedioGoles
+		// Opción 1: Llama a IngresarGolesBase (Pasar variable por referencia)
+		// Opción 2: Llama a ProcesarGolesMaximo (Pasar golesBase por valor para comparar)
+		// Opción 3: Llama a CalcularPromedioGoles (Pasar golesBase por valor para sumar al total)
 		// Opción 4: Llama a MostrarEstado (Pasar variable por valor)
 		// Opción 0: Mostrar mensaje de salida
 		
@@ -182,8 +186,8 @@ SubProceso MostrarMenu(opc Por Referencia)
 	Borrar Pantalla;
 	Escribir "=== ESTADÍSTICAS SCALONETA 2026 ===";
 	Escribir "1. Ingresar Goles Base (Entrada)";
-	Escribir "2. Buscar Partido con Más Goles (Extremo y Posición)";
-	Escribir "3. Calcular Promedio de Goles (Promedio)";
+	Escribir "2. Buscar Partido con Más Goles y Comparar (Extremo)";
+	Escribir "3. Calcular Promedio y Total Histórico (Acumulador)";
 	Escribir "4. Ver Estado Actual (Salida)";
 	Escribir "0. Salir";
 	Escribir "Ingrese una opción: ";
@@ -199,19 +203,19 @@ FinSubProceso
 
 // [TU CÓDIGO AQUÍ]
 // Desarrolla el Módulo para hallar el MÁXIMO y su POSICIÓN.
-// 1. Pedir N partidos.
-// 2. Iterar N veces, pedir goles validando (deben ser positivos).
-// 3. Determinar el máximo y en qué iteración ocurrió. Mostrar el resultado.
-SubProceso ProcesarGolesMaximo()
+// 1. Recibe golesBase como parámetro (Por Valor).
+// 2. Pedir N partidos e iterar pidiendo goles validados (positivos).
+// 3. Determinar el máximo, en qué iteración ocurrió y mostrar si superó a golesBase.
+SubProceso ProcesarGolesMaximo(golesBase)
 	
 FinSubProceso
 
 // [TU CÓDIGO AQUÍ]
-// Desarrolla el Módulo para calcular PROMEDIO.
-// 1. Pedir N partidos.
-// 2. Iterar N veces, pedir goles validando (deben ser positivos).
-// 3. Acumular y calcular promedio al final. Mostrar el resultado.
-SubProceso CalcularPromedioGoles()
+// Desarrolla el Módulo para calcular PROMEDIO y TOTAL.
+// 1. Recibe golesBase como parámetro (Por Valor).
+// 2. Pedir N partidos e iterar pidiendo goles validados (positivos).
+// 3. Calcular promedio de los N partidos. Sumar golesBase al acumulador para obtener el total histórico.
+SubProceso CalcularPromedioGoles(golesBase)
 	
 FinSubProceso
 
@@ -258,7 +262,7 @@ FinAlgoritmo</pre>
                                         <th class="p-3 font-semibold w-1/4">Iteración</th>
                                         <th class="p-3 font-semibold w-1/4">partido</th>
                                         <th class="p-3 font-semibold w-1/4">goles_messi</th>
-                                        <th class="p-3 font-semibold w-1/4">Condición (partido &lt;= 3)</th>
+                                        <th class="p-3 font-semibold w-1/4">Condición (partido <= 3)</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-sky-100">
