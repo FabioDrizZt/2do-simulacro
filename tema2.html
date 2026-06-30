@@ -48,7 +48,7 @@
             <section>
                 <h2 class="text-2xl font-bold mb-3 border-b-2 border-white/20 inline-block text-blue-300 theme-font tracking-wide">Contexto</h2>
                 <div class="leading-relaxed opacity-90 text-lg">
-                    <p class='mb-2'>La AFA necesita un sistema para controlar la venta de entradas de los hinchas argentinos en los diferentes estadios donde jugará la Selección en el Mundial 2026. Además, el Dibu Martínez ha pedido que se lleve un registro estricto para que la hinchada se haga sentir.</p>
+                    <p class='mb-2'>La AFA necesita un systema para controlar la venta de entradas de los hinchas argentinos en los diferentes estadios donde jugará la Selección en el Mundial 2026. Además, el Dibu Martínez ha pedido que se lleve un registro estricto para que la hinchada se haga sentir.</p>
                 </div>
             </section>
 
@@ -60,9 +60,9 @@
                     <p>Completar el programa en PSeInt que administra esta información. Se te entrega un archivo base con el menú y salida resueltos. Debes desarrollar:</p>
                     <ul class="list-disc pl-5 space-y-1">
                         <li>El bloque <strong>Segun</strong> en el algoritmo principal para invocar módulos.</li>
-                        <li><strong>Módulo de Entrada:</strong> Solicitar capacidad total y validar que sea mayor a 10000.</li>
-                        <li><strong>Módulo de Proceso 1:</strong> Procesar <em>N</em> sectores, validar ventas ingresadas, e identificar el valor <strong>MÍNIMO</strong> de ventas y en qué <strong>sector (posición)</strong> ocurrió.</li>
-                        <li><strong>Módulo de Proceso 2:</strong> Procesar <em>N</em> sectores, validar, sumar en un ACUMULADOR y calcular el <strong>PORCENTAJE</strong> sobre la capacidad total.</li>
+                        <li><strong>Módulo de Entrada:</strong> Solicitar <em>capacidad total</em> del estadio y validar que sea mayor a 10000.</li>
+                        <li><strong>Módulo de Proceso 1:</strong> Recibir la capacidad total por parámetro. Procesar <em>N</em> sectores, pedir entradas vendidas validando que sean positivas y, además, <strong>verificar que no superen la capacidad total</strong> del estadio. Identificar el valor <strong>MÍNIMO</strong> de ventas y en qué <strong>sector (posición)</strong> ocurrió.</li>
+                        <li><strong>Módulo de Proceso 2:</strong> Recibir la capacidad total por parámetro. Procesar <em>N</em> sectores, validar ventas, sumarlas en un <strong>ACUMULADOR</strong> y calcular qué <strong>PORCENTAJE</strong> exacto representan las ventas totales acumuladas sobre dicha capacidad total del estadio.</li>
                     </ul>
                 </div>
             </section>
@@ -92,7 +92,7 @@
 (ingresa 20000)
 Opción 4
 Opción 0</pre>
-                               </div>
+                                </div>
                             </div>
                             <div class="md:col-span-8 bg-[#0a0a0a] p-5 rounded-xl border border-gray-800 shadow-inner flex flex-col relative overflow-hidden">
                                 <h3 class="text-sm font-bold mb-3 text-green-400 uppercase tracking-wider">Salida Esperada por Pantalla</h3>
@@ -118,15 +118,16 @@ Ingrese una opción: 0
                             <div class="md:col-span-4 bg-black/30 p-5 rounded-xl border border-white/10 flex flex-col">
                                 <h3 class="text-sm font-bold mb-3 text-blue-300 uppercase tracking-wider">Entrada (Simulada)</h3>
                                 <div class="flex-grow bg-black/50 p-4 rounded-lg border border-white/5">
-                                    <pre class="console text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">Asume Capacidad=100000
+                                    <pre class="console text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">Asume Capacidad = 50000
 
 Opción 2
 (N=3 sectores)
-(ventas: 10000, 2000, 15000)
+(ventas: 10000, 2000, 60000 -> ¡Error!)
+(reingresa sector 3: 15000)
 
 Opción 3
 (N=2 sectores)
-(ventas: 5000, 5000)
+(ventas: 2500, 2500)
 
 Opción 0</pre>
                                 </div>
@@ -138,14 +139,17 @@ Opción 0</pre>
 Ingrese la cantidad de sectores a analizar: 3
 Ventas sector 1: 10000
 Ventas sector 2: 2000
+Ventas sector 3: 60000
+[Error] Las ventas no pueden superar la capacidad total (50000).
 Ventas sector 3: 15000
 El sector con menos ventas fue el sector 2 con 2000 entradas.
 
 Ingrese una opción: 3
 Ingrese la cantidad de sectores a calcular: 2
-Ventas sector 1: 5000
-Ventas sector 2: 5000
-Porcentaje de ventas respecto a capacidad: 10%
+Ventas sector 1: 2500
+Ventas sector 2: 2500
+Ventas totales acumuladas en sectores: 5000
+Porcentaje de ventas respecto a la capacidad del estadio: 10.0%
 
 Ingrese una opción: 0
 (Fin del programa)</pre>
@@ -171,8 +175,8 @@ Ingrese una opción: 0
 		
 		// [TU CÓDIGO AQUÍ - Construye el Segun completo con las opciones 0, 1, 2, 3 y 4]
 		// Opción 1: Llama a IngresarCapacidadTotal (Pasar variable por referencia)
-		// Opción 2: Llama a ProcesarSectorMinimo 
-		// Opción 3: Llama a CalcularPorcentajeVentas (Necesita la capacidadTotal para el cálculo)
+		// Opción 2: Llama a ProcesarSectorMinimo (Pasar capacidadTotal por valor para validar topes)
+		// Opción 3: Llama a CalcularPorcentajeVentas (Pasar capacidadTotal por valor para calcular porcentaje)
 		// Opción 4: Llama a MostrarEstado (Pasar variable por valor)
 		// Opción 0: Mostrar mensaje de salida
 		
@@ -184,8 +188,8 @@ SubProceso MostrarMenu(opc Por Referencia)
 	Borrar Pantalla;
 	Escribir "=== ENTRADAS HINCHADA ARGENTINA 2026 ===";
 	Escribir "1. Ingresar Capacidad Total (Entrada)";
-	Escribir "2. Buscar Sector con Menos Ventas (Extremo y Posición)";
-	Escribir "3. Calcular Porcentaje de Ventas Totales (Porcentaje)";
+	Escribir "2. Buscar Sector con Menos Ventas (Extremo con Tope)";
+	Escribir "3. Calcular Porcentaje de Ocupación Real (Porcentaje)";
 	Escribir "4. Ver Estado Actual (Salida)";
 	Escribir "0. Salir";
 	Escribir "Ingrese una opción: ";
@@ -201,20 +205,20 @@ FinSubProceso
 
 // [TU CÓDIGO AQUÍ]
 // Desarrolla el Módulo para hallar el MÍNIMO y su POSICIÓN.
-// 1. Pedir N sectores.
-// 2. Iterar N veces, pedir entradas vendidas validando (deben ser positivas).
-// 3. Determinar el mínimo y en qué iteración ocurrió. Mostrar el resultado.
-SubProceso ProcesarSectorMinimo()
+// 1. Recibe la capacidadTotal como parámetro (Por Valor).
+// 2. Pedir N sectores e iterar pidiendo ventas.
+// 3. Validar que las ventas sean positivas y que NO superen a capacidadTotal.
+// 4. Determinar el mínimo, en qué iteración ocurrió y mostrar el resultado.
+SubProceso ProcesarSectorMinimo(capacidadTotal)
 	
 FinSubProceso
 
 // [TU CÓDIGO AQUÍ]
 // Desarrolla el Módulo para calcular PORCENTAJE.
-// 1. Recibe la capacidadTotal (Por Valor) en los parámetros.
-// 2. Pedir N sectores.
-// 3. Iterar N veces, pedir entradas validando (deben ser positivas).
-// 4. Acumular las ventas y calcular qué porcentaje representan respecto a la capacidadTotal.
-SubProceso CalcularPorcentajeVentas()
+// 1. Recibe la capacidadTotal como parámetro (Por Valor).
+// 2. Pedir N sectores e iterar acumulando las entradas vendidas validando (deben ser positivas).
+// 3. Mostrar las ventas totales calculando qué porcentaje representan frente a la capacidadTotal.
+SubProceso CalcularPorcentajeVentas(capacidadTotal)
 	
 FinSubProceso
 
@@ -302,7 +306,7 @@ FinAlgoritmo</pre>
                         <div class="mt-6 border-t border-blue-500/20 pt-4">
                             <h3 class="text-sm font-bold mb-2 text-green-400 uppercase tracking-wider">Salida Final por Pantalla</h3>
                             <div class="h-12 w-full bg-[#0a0a0a] border border-gray-700 rounded-lg flex items-center px-4">
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
