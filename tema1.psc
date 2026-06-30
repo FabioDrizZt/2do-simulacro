@@ -31,7 +31,7 @@ FinSubProceso
 
 // [TU CÓDIGO AQUÍ]
 // Desarrolla el Módulo de Entrada.
-// Recuerda usar paso Por Referencia para que guarde el valor en golesBase, y validar que los goles >= 0.
+// Recuerda usar paso Por Referencia para que guarde el valor en golesBase, y validar que los goles sean positivos.
 SubProceso IngresarGolesBase()
 	
 FinSubProceso
@@ -39,7 +39,7 @@ FinSubProceso
 // [TU CÓDIGO AQUÍ]
 // Desarrolla el Módulo para hallar el MÁXIMO y su POSICIÓN.
 // 1. Pedir N partidos.
-// 2. Iterar N veces, pedir goles validando (>=0).
+// 2. Iterar N veces, pedir goles validando (deben ser positivos).
 // 3. Determinar el máximo y en qué iteración ocurrió. Mostrar el resultado.
 SubProceso ProcesarGolesMaximo()
 	
@@ -48,7 +48,7 @@ FinSubProceso
 // [TU CÓDIGO AQUÍ]
 // Desarrolla el Módulo para calcular PROMEDIO.
 // 1. Pedir N partidos.
-// 2. Iterar N veces, pedir goles validando (>=0).
+// 2. Iterar N veces, pedir goles validando (deben ser positivos).
 // 3. Acumular y calcular promedio al final. Mostrar el resultado.
 SubProceso CalcularPromedioGoles()
 	

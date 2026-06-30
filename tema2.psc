@@ -39,7 +39,7 @@ FinSubProceso
 // [TU CÓDIGO AQUÍ]
 // Desarrolla el Módulo para hallar el MÍNIMO y su POSICIÓN.
 // 1. Pedir N sectores.
-// 2. Iterar N veces, pedir entradas vendidas validando (>=0).
+// 2. Iterar N veces, pedir entradas vendidas validando (deben ser positivas).
 // 3. Determinar el mínimo y en qué iteración ocurrió. Mostrar el resultado.
 SubProceso ProcesarSectorMinimo()
 	
@@ -49,7 +49,7 @@ FinSubProceso
 // Desarrolla el Módulo para calcular PORCENTAJE.
 // 1. Recibe la capacidadTotal (Por Valor) en los parámetros.
 // 2. Pedir N sectores.
-// 3. Iterar N veces, pedir entradas validando (>=0).
+// 3. Iterar N veces, pedir entradas validando (deben ser positivas).
 // 4. Acumular las ventas y calcular qué porcentaje representan respecto a la capacidadTotal.
 SubProceso CalcularPorcentajeVentas()
 	

@@ -62,7 +62,7 @@
                     <p>Completar el programa en PSeInt que administra esta información. Se te entrega un archivo base con el menú y salida resueltos. Debes desarrollar:</p>
                     <ul class="list-disc pl-5 space-y-1">
                         <li>El bloque <strong>Segun</strong> en el algoritmo principal para invocar módulos.</li>
-                        <li><strong>Módulo de Entrada:</strong> Solicitar goles base iniciales y validar que no sea negativo con <code class="bg-black/30 px-1 rounded text-sky-200 text-sm">Repetir...Mientras Que</code>.</li>
+                        <li><strong>Módulo de Entrada:</strong> Solicitar goles base iniciales y validar que sea un valor positivo.</li>
                         <li><strong>Módulo de Proceso 1:</strong> Procesar <em>N</em> partidos, validar los goles ingresados, e identificar el valor <strong>MÁXIMO</strong> de goles y en qué <strong>partido (posición)</strong> ocurrió.</li>
                         <li><strong>Módulo de Proceso 2:</strong> Procesar <em>N</em> partidos, validar, y usar un <strong>ACUMULADOR</strong> para calcular el <strong>PROMEDIO</strong> de goles al finalizar.</li>
                     </ul>
@@ -160,6 +160,74 @@ Ingrese una opción: 0
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Código Base Section -->
+            <section class="bg-black/20 p-5 md:p-6 rounded-xl border border-white/5 shadow-inner">
+                <h2 class="text-xl font-bold mb-4 text-sky-300 theme-font tracking-wide flex items-center gap-2">
+                    Código Base (PSeInt)
+                </h2>
+                <div class="bg-[#1e1e1e] p-4 rounded-lg border border-white/10 overflow-x-auto">
+                    <pre class="console text-sm text-[#d4d4d4] whitespace-pre-wrap leading-relaxed">Algoritmo Scaloneta_Tema1
+	Definir opc, golesBase Como Entero;
+	golesBase = 0;
+	opc = -1;
+	
+	Repetir
+		MostrarMenu(opc);
+		
+		// [TU CÓDIGO AQUÍ - Construye el Segun completo con las opciones 0, 1, 2, 3 y 4]
+		// Opción 1: Llama a IngresarGolesBase (Pasar variable por referencia si es necesario o leerla en el subproceso)
+		// Opción 2: Llama a ProcesarGolesMaximo 
+		// Opción 3: Llama a CalcularPromedioGoles
+		// Opción 4: Llama a MostrarEstado (Pasar variable por valor)
+		// Opción 0: Mostrar mensaje de salida
+		
+		Esperar Tecla;
+	Mientras Que opc <> 0
+FinAlgoritmo
+
+SubProceso MostrarMenu(opc Por Referencia)
+	Borrar Pantalla;
+	Escribir "=== ESTADÍSTICAS SCALONETA 2026 ===";
+	Escribir "1. Ingresar Goles Base (Entrada)";
+	Escribir "2. Buscar Partido con Más Goles (Extremo y Posición)";
+	Escribir "3. Calcular Promedio de Goles (Promedio)";
+	Escribir "4. Ver Estado Actual (Salida)";
+	Escribir "0. Salir";
+	Escribir "Ingrese una opción: ";
+	Leer opc;
+FinSubProceso
+
+// [TU CÓDIGO AQUÍ]
+// Desarrolla el Módulo de Entrada.
+// Recuerda usar paso Por Referencia para que guarde el valor en golesBase, y validar que los goles sean positivos.
+SubProceso IngresarGolesBase()
+	
+FinSubProceso
+
+// [TU CÓDIGO AQUÍ]
+// Desarrolla el Módulo para hallar el MÁXIMO y su POSICIÓN.
+// 1. Pedir N partidos.
+// 2. Iterar N veces, pedir goles validando (deben ser positivos).
+// 3. Determinar el máximo y en qué iteración ocurrió. Mostrar el resultado.
+SubProceso ProcesarGolesMaximo()
+	
+FinSubProceso
+
+// [TU CÓDIGO AQUÍ]
+// Desarrolla el Módulo para calcular PROMEDIO.
+// 1. Pedir N partidos.
+// 2. Iterar N veces, pedir goles validando (deben ser positivos).
+// 3. Acumular y calcular promedio al final. Mostrar el resultado.
+SubProceso CalcularPromedioGoles()
+	
+FinSubProceso
+
+SubProceso MostrarEstado(golesBase)
+	Escribir "Goles base registrados en el sistema: ", golesBase;
+FinSubProceso</pre>
                 </div>
             </section>
         </div>

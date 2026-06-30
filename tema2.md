@@ -8,19 +8,19 @@ Completar el programa en PSeInt que administra esta información. Se te entrega 
 
 Debes desarrollar:
 1. **El bloque Segun** en el algoritmo principal para invocar a los submódulos.
-2. **Módulo de Entrada (`IngresarCapacidadTotal`)**: Debe solicitar la capacidad total del estadio y validar que sea estrictamente mayor a 10000 usando un ciclo `Repetir...Mientras Que`.
+2. **Módulo de Entrada (`IngresarCapacidadTotal`)**: Debe solicitar la capacidad total del estadio y validar que sea estrictamente mayor a 10000.
 3. **Módulo de Proceso 1 (`ProcesarSectorMinimo`)**: 
    - Debe pedir al usuario procesar $N$ sectores del estadio.
-   - En un bucle de $N$ iteraciones, pedir la cantidad de entradas vendidas por sector y validarlas (>= 0).
+   - En un bucle de $N$ iteraciones, pedir la cantidad de entradas vendidas por sector y validarlas (deben ser positivas).
    - Identificar y guardar el **valor MÍNIMO** de ventas ingresado y en qué **sector (posición)** ocurrió.
 4. **Módulo de Proceso 2 (`CalcularPorcentajeVentas`)**:
    - Debe pedir al usuario procesar $N$ sectores.
-   - En un bucle, pedir las ventas por sector y validarlas (>= 0).
+   - En un bucle, pedir las ventas por sector y validarlas (deben ser positivas).
    - Utilizar un **ACUMULADOR** para sumar todas las ventas y luego calcular qué **PORCENTAJE** representan estas ventas acumuladas sobre la capacidad total del estadio. Mostrar el porcentaje.
 
 **Criterios de Evaluación:**
 - Uso correcto del bloque `Segun` y paso de parámetros.
-- Correcta validación de datos con `Repetir...Mientras Que`.
+- Correcta validación de datos.
 - Algoritmo correcto para encontrar el Mínimo y su posición (cuidado con la inicialización del mínimo).
 - Cálculo correcto de porcentajes usando acumuladores y la variable de capacidad total.
 

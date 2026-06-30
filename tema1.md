@@ -8,19 +8,19 @@ Completar el programa en PSeInt que administra esta información. Se te entrega 
 
 Debes desarrollar:
 1. **El bloque Segun** en el algoritmo principal para invocar a los submódulos.
-2. **Módulo de Entrada (`IngresarGolesBase`)**: Debe solicitar la cantidad de goles base con la que inicia el torneo y validar que no sea negativa usando un ciclo `Repetir...Mientras Que`.
+2. **Módulo de Entrada (`IngresarGolesBase`)**: Debe solicitar la cantidad de goles base con la que inicia el torneo y validar que sea un valor positivo.
 3. **Módulo de Proceso 1 (`ProcesarGolesMaximo`)**: 
    - Debe pedir al usuario procesar $N$ partidos.
-   - En un bucle de $N$ iteraciones, pedir los goles de cada partido y validarlos (>= 0).
+   - En un bucle de $N$ iteraciones, pedir los goles de cada partido y validarlos (deben ser positivos).
    - Identificar y guardar el **valor MÁXIMO** de goles ingresado y en qué **partido (posición)** ocurrió.
 4. **Módulo de Proceso 2 (`CalcularPromedioGoles`)**:
    - Debe pedir al usuario procesar $N$ partidos.
-   - En un bucle, pedir los goles de cada partido y validarlos (>= 0).
+   - En un bucle, pedir los goles de cada partido y validarlos (deben ser positivos).
    - Utilizar un **ACUMULADOR** para sumar los goles y calcular el **PROMEDIO** al finalizar el ciclo. Mostrar el promedio por pantalla.
 
 **Criterios de Evaluación:**
 - Uso correcto del bloque `Segun` y paso de parámetros.
-- Correcta validación de datos con `Repetir...Mientras Que`.
+- Correcta validación de datos.
 - Algoritmo correcto para encontrar el Máximo y su posición.
 - Cálculo correcto del promedio usando acumuladores.
 
